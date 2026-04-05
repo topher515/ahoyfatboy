@@ -23,6 +23,7 @@ case "${1:-}" in
       echo "Docker Desktop may already be in login items."
 
     # 2. LaunchAgent: run docker compose up after Docker is ready
+    mkdir -p "$(dirname "$PLIST_PATH")"
     cat > "$PLIST_PATH" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
