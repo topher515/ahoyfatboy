@@ -33,12 +33,14 @@ case "${1:-}" in
 
   undo)
     if [[ $EUID -ne 0 ]]; then echo "Error: run with sudo"; exit 1; fi
-    echo "Restoring macOS defaults..."
-    pmset -a sleep 1        # system sleep after 1 min (you may want to tune this)
-    pmset -a displaysleep 10
+    echo "Restoring previous settings..."
+    pmset -a sleep 0
+    pmset -a displaysleep 180
     pmset -a disksleep 10
-    pmset -a autorestart 0
+    pmset -a autorestart 1
     pmset -a womp 1
+    pmset -a powernap 1
+    pmset -a standby 0
     pmset repeat cancel
     echo "Done. Verify with: $0 status"
     ;;
